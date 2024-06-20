@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Dynamic List</title>
+</head>
+
+<body>
+    <main class="container">
+        <section class="sidebar">
+            <div class="sidebar-content">
+                <h2>Quantity</h2>
+                <input type="number" id="quantity" placeholder="Type here" value="<%= initialQuantity %>">
+            </div>
+        </section>
+        <section class="main-content">
+            <ul id="items-list"></ul>
+        </section>
+    </main>
+
+    <script>
+        document.getElementById('quantity').addEventListener('input', function () {
+            const quantity = parseInt(this.value);
+            const itemsList = document.getElementById('items-list');
+            itemsList.innerHTML = '';
+
+            for (let i = 1; i <= quantity; i++) {
+                const item = document.createElement('li');
+                item.setAttribute('data-number', i);
+                item.textContent = `${i}`;
+                itemsList.appendChild(item);
+            }
+        });
+    </script>
+</body>
+
+</html>
